@@ -1,0 +1,17 @@
+Package: covid19
+Title: COVID-19 Quarantine Breach Analysis and Visualisation
+Version: 0.0.0.9000
+Authors@R: 
+    person("Mey", "Siv", , "sivmey568@gmail.com", role = c("aut", "cre"))
+Description: Provides data, analysis, and an interactive Shiny app to explore COVID-19 quarantine breach scenarios under different R0 and vaccine efficacy values.
+License: `use_mit_license()`, `use_gpl3_license()` 
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Suggests:  
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Depends: 
+    R (>= 3.5)
+LazyData: true
