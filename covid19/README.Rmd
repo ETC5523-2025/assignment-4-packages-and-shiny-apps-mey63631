@@ -26,7 +26,7 @@ You can install the development version of covid19 from [GitHub](https://github.
 
 ``` r
 
-remotes::install_github("https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-mey63631/covid19")
+remotes::install_github(https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-mey63631/tree/main/covid19)
 ```
 
 ## Example
@@ -36,6 +36,7 @@ This is a basic example which shows you how to solve a common problem:
 ```{r example}
 library(covid19)
 ## basic example code
+
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
