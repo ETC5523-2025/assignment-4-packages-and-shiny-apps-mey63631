@@ -1,14 +1,18 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# covid19
+# covid19: Visualising COVID-19 Quarantine Breach Scenarios
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-Interactive Shinny app to explore COVID-10 quarantine breach risk under
-different basic Reproductive Ratio (R0) scenarios.
+This R package explores how the relative force of infection changes with
+vaccine efficacy (VE) and basic reproductive ratio (R0).  
+It provides simulation data, visualization functions, and an interactive
+R Shiny application to help users explore how changes in R0 and VE
+affect quarantine breach risks.  
+The package and app are inspired by Zachreson et al. (2022).
 
 ## Installation
 
