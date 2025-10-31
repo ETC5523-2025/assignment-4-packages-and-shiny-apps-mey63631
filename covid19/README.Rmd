@@ -26,7 +26,8 @@ You can install the development version of covid19 from [GitHub](https://github.
 
 ``` r
 
-remotes::install_github(https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-mey63631/tree/main/covid19)
+remotes::install_github("ETC5523-2025/assignment-4-packages-and-shiny-apps-mey63631", subdir = "covid19")
+
 ```
 
 ## Example
