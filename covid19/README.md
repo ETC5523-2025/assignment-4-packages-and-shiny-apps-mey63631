@@ -20,6 +20,11 @@ You can install the development version of covid19 from
 remotes::install_github("ETC5523-2025/assignment-4-packages-and-shiny-apps-mey63631", subdir = "covid19")
 ```
 
+## 📘 Package website
+
+The pkgdown website for this package is available at:  
+<https://ETC5523-2025.github.io/assignment-4-packages-and-shiny-apps-mey63631/>
+
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
