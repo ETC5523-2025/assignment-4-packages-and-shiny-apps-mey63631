@@ -1,3 +1,5 @@
+destination: ../docs
+
 url: https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-mey63631/
 
 template:
@@ -13,3 +15,5 @@ authors:
   Mey Siv:
     href: https://github.com/mey63631
 
+development:
+  mode: auto
