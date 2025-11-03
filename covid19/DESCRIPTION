@@ -2,16 +2,22 @@ Package: covid19
 Title: COVID-19 Quarantine Breach Analysis and Visualisation
 Version: 0.0.0.9000
 Authors@R: 
-    person("Mey", "Siv", , "sivmey568@gmail.com", role = c("aut", "cre"))
-Description: Provides data, analysis, and an interactive Shiny app to explore COVID-19 quarantine breach scenarios under different R0 and vaccine efficacy values.
-License: `use_mit_license()`, `use_gpl3_license()` 
+    person("Mey", "Siv", email = "sivmey568@gmail.com", role = c("aut", "cre"))
+Description: Provides data, analysis, and an interactive Shiny app 
+    to explore COVID-19 quarantine breach scenarios under different 
+    R0 and vaccine efficacy values.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Suggests:  
+Depends: 
+    R (>= 3.5)
+Suggests:
+    ggplot2,
+    testthat (>= 3.0.0),
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-Depends: 
-    R (>= 3.5)
 LazyData: true
+URL: https://ETC5523-2025.github.io/assignment-4-packages-and-shiny-apps-mey63631, https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-mey63631/
+BugReports: https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-mey63631/issues

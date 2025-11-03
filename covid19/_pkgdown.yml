@@ -1,20 +1,26 @@
-url: "https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-mey63631/"
+url: https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-mey63631/
 template:
   bootstrap: 5
+  package: tidytemplate
   bootswatch: cerulean
+
+development:
+  mode: auto
+
+authors:
+  Claus Wilke:
+  href: https://clauswilke.com
+
 
 navbar:
   structure:
-    left: [reference, articles]
-    right:
-      - text: "Shiny App"
-        href: "https://yourusername.shinyapps.io/covid19-app/"
-      - github
-
-reference:
-  - title: "Dataset"
-    contents:
-      - covid19
-  - title: "Functions"
-    contents:
-      - plot_covid
+  left: [intro, reference, articles]
+right: [search, github, ai]
+components:
+  extensions:
+  icon: fa-puzzle-piece
+aria-label: Extensions
+ai:
+  text: Ask AI ✨
+href: "#"
+class: open-kapa-widget

@@ -36,15 +36,58 @@ efficacy (VE) and the basic reproductive ratio of the virus (R0).
 }
 }
 \examples{
+# Load the data
+data(covid19)
+
 # View the first rows
 head(covid19)
 
-# Plot heatmap (using helper function from package)
-if(require(ggplot2)) {
-  plot_covid("All")
-}
+# Basic summary statistics
+summary(covid19)
 
-# Plot line plot for a specific R0
-plot_covid(3)
+# Simple plot using base R
+plot(Value ~ VE, data = covid19, col = R0, pch = 16)
+legend("topright", legend = unique(covid19$R0), col = unique(covid19$R0), pch = 16)
+
+# Heatmap visualization (requires ggplot2)
+if (requireNamespace("ggplot2", quietly = TRUE)) {
+  library(ggplot2)
+  p <- ggplot(covid19, aes(x = R0, y = VE, fill = Value)) +
+    geom_tile(color = "black", width = 1, height = 0.1) +
+    geom_text(aes(label = sprintf("\%.3g", Value)), color = "white", size = 3) +
+    scale_fill_gradientn(
+      colours = c("black", "darkred", "red", "orange", "yellow", "white"),
+      name = "Relative\nForce of Infection"
+    ) +
+    geom_contour(aes(z = Value), color = "cyan", linewidth = 0.7) +
+    theme_minimal(base_size = 14) +
+    theme(
+      panel.grid = element_blank(),
+      axis.title = element_text(face = "bold"),
+      legend.title = element_text(face = "bold")
+    ) +
+    labs(
+      x = "R0 (Basic Reproductive Ratio)",
+      y = "VE (Vaccine Efficacy)",
+      subtitle = "Heatmap shows relative force of infection for all R0 values"
+    ) +
+    scale_y_continuous(breaks = seq(0, 0.9, 0.1), labels = sprintf("\%.1f", seq(0, 0.9, 0.1))) +
+    scale_x_continuous(breaks = 1:10)
+
+  # Add rectangles
+  p +
+    annotate("rect",
+             xmin = 2 - 0.5, xmax = 4 + 0.5,
+             ymin = 0.9 - 0.05, ymax = 0.9 + 0.05,
+             color = "limegreen", fill = NA, linetype = "dotted", size = 1.2) +
+    annotate("rect",
+             xmin = 5 - 0.5, xmax = 8 + 0.5,
+             ymin = 0.6 - 0.15, ymax = 0.8 + 0.05,
+             color = "yellow", fill = NA, linetype = "dashed", size = 1.2) +
+    annotate("rect",
+             xmin = 2 - 0.5, xmax = 4 + 0.5,
+             ymin = 0.0 - 0.05, ymax = 0.0 + 0.05,
+             color = "cyan", fill = NA, linetype = "dashed", size = 1.2)
+}
 }
 \keyword{datasets}
