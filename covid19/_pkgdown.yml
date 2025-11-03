@@ -1,26 +1,15 @@
 url: https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-mey63631/
+
 template:
   bootstrap: 5
   package: tidytemplate
-  bootswatch: cerulean
-
-development:
-  mode: auto
-
-authors:
-  Claus Wilke:
-  href: https://clauswilke.com
-
 
 navbar:
   structure:
-  left: [intro, reference, articles]
-right: [search, github, ai]
-components:
-  extensions:
-  icon: fa-puzzle-piece
-aria-label: Extensions
-ai:
-  text: Ask AI ✨
-href: "#"
-class: open-kapa-widget
+    left: [intro, reference, articles]
+    right: [search, github]
+
+authors:
+  Mey Siv:
+    href: https://github.com/mey63631
+

@@ -19,5 +19,5 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 LazyData: true
-URL: https://ETC5523-2025.github.io/assignment-4-packages-and-shiny-apps-mey63631, https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-mey63631/
+URL: https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-mey63631/
 BugReports: https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-mey63631/issues

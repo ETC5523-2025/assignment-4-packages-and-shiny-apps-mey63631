@@ -8,14 +8,103 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
+library(covid19)
+library(ggplot2)
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 ```
 
+
+# Overview
+
+This vignette demonstrates how to use the covid19 package to explore COVID-19 quarantine breach scenarios.
+It covers:
+
+### Inspecting the dataset.
+
 ```{r setup}
-library(covid19)
+data("covid19") 
+head(covid19)
+
+# summary of dataset 
+summary(covid19)
 ```
+
+
+### 1. Creating a line plot for a specific R0.
+
+This line plot shows how the relative force of infection changes with VE for R0 = 3.
+```{r}
+covid19 |>
+dplyr::filter(R0 == 3) |>
+ggplot(aes(x = VE, y = Value)) +
+geom_line(color = "blue", size = 1.2) +
+geom_point(color = "darkblue") +
+labs(
+title = "VE vs Relative Force of Infection for R0 = 3",
+x = "Vaccine Efficacy",
+y = "Relative Force of Infection"
+)
+```
+
+
+
+### 2. Launching the interactive Shiny app.
+
+The Shiny app provides a user-friendly interface to explore the dataset interactively.
+```{r}
+#| eval=FALSE
+launch_covid19_app()
+```
+
+
+### 3. Heatmap of relative force of infection
+
+The heatmap shows how the relative force of infection changes across all combinations of R0 and VE.
+Higher values (yellow/white) indicate higher risk of quarantine breaches leading to transmission.
+```{r}
+library(ggplot2)
+
+# Ensure numeric
+covid19$R0 <- as.numeric(covid19$R0)
+covid19$VE <- as.numeric(covid19$VE)
+
+# Heatmap without contour
+p <- ggplot(covid19, aes(x = R0, y = VE, fill = Value)) +
+  geom_tile(color = "black", width = 1, height = 0.1) +
+  geom_text(aes(label = sprintf("%.3g", Value)), color = "white", size = 3) +
+  scale_fill_gradientn(
+    colours = c("black", "darkred", "red", "orange", "yellow", "white"),
+    name = "Relative\nForce of Infection"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    panel.grid = element_blank(),
+    axis.title = element_text(face = "bold"),
+    legend.title = element_text(face = "bold")
+  ) +
+  labs(
+    x = "R0 (Basic Reproductive Ratio)",
+    y = "VE (Vaccine Efficacy)",
+    subtitle = "Heatmap of Relative Force of Infection for all R0 values"
+  ) +
+  scale_y_continuous(breaks = seq(0, 0.9, 0.1), labels = sprintf("%.1f", seq(0, 0.9, 0.1))) +
+  scale_x_continuous(breaks = 1:10) +
+  # Add highlight boxes
+  annotate("rect", xmin = 2 - 0.5, xmax = 4 + 0.5, ymin = 0.9 - 0.05, ymax = 0.9 + 0.05,
+           color = "limegreen", fill = NA, linetype = "dotted", linewidth = 1.2) +
+  annotate("rect", xmin = 5 - 0.5, xmax = 8 + 0.5, ymin = 0.6 - 0.15, ymax = 0.8 + 0.05,
+           color = "yellow", fill = NA, linetype = "dashed", linewidth = 1.2) +
+  annotate("rect", xmin = 2 - 0.5, xmax = 4 + 0.5, ymin = 0.0 - 0.05, ymax = 0.0 + 0.05,
+           color = "cyan", fill = NA, linetype = "dashed", linewidth = 1.2)
+
+print(p)
+```
+
+
+
+
 
 

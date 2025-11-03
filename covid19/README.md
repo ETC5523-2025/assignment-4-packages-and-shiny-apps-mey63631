@@ -7,12 +7,13 @@
 
 <!-- badges: end -->
 
-This R package explores how the relative force of infection changes with
-vaccine efficacy (VE) and basic reproductive ratio (R0).  
-It provides simulation data, visualization functions, and an interactive
-R Shiny application to help users explore how changes in R0 and VE
-affect quarantine breach risks.  
-The package and app are inspired by Zachreson et al. (2022).
+The covid19 package provides simulation data, visualization tools, and
+an interactive Shiny app to explore COVID-19 quarantine breach
+scenarios. It helps users understand how different vaccine efficacy
+levels (VE) and basic reproductive ratios (R0) influence the relative
+force of infection, allowing exploration of potential outbreak risks
+under various scenarios. The package and app are inspired by Zachreson
+et al. (2022).
 
 ## Installation
 
@@ -20,7 +21,7 @@ You can install the development version of covid19 from
 [GitHub](https://github.com/) with:
 
 ``` r
-
+install.packages("remotes")
 remotes::install_github("ETC5523-2025/assignment-4-packages-and-shiny-apps-mey63631", subdir = "covid19")
 ```
 
@@ -29,35 +30,48 @@ remotes::install_github("ETC5523-2025/assignment-4-packages-and-shiny-apps-mey63
 The pkgdown website for this package is available at:  
 <https://ETC5523-2025.github.io/assignment-4-packages-and-shiny-apps-mey63631/>
 
+## Dataset
+
+The `covid19` dataset contains simulated relative force of infection
+values for combinations of R0 (basic reproductive ratio) and VE (vaccine
+efficacy).
+
+- **R0:** Basic reproductive ratio (1–10)  
+- **VE:** Vaccine efficacy (0–0.9)  
+- **Value:** Relative force of infection
+
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(covid19)
-## basic example code
+
+# View first rows of the dataset
+head(covid19)
+#>   R0  Value  VE
+#> 1  1 0.0170 0.9
+#> 2  1 0.0167 0.8
+#> 3  1 0.0370 0.7
+#> 4  1 0.0402 0.6
+#> 5  1 0.0607 0.5
+#> 6  1 0.0972 0.4
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`?
 You can include R chunks like so:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+summary(covid19)
+#>        R0           Value              VE      
+#>  Min.   : 1.0   Min.   :0.0167   Min.   :0.00  
+#>  1st Qu.: 3.0   1st Qu.:0.2045   1st Qu.:0.20  
+#>  Median : 5.5   Median :0.6185   Median :0.45  
+#>  Mean   : 5.5   Mean   :1.3918   Mean   :0.45  
+#>  3rd Qu.: 8.0   3rd Qu.:1.9350   3rd Qu.:0.70  
+#>  Max.   :10.0   Max.   :7.3800   Max.   :0.90
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+Using README.Rmd instead of a static README.md allows you to include
+live R code chunks. These chunks are executed when the README is built,
+showing real data, plots, and outputs directly on GitHub.
